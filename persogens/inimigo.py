@@ -18,7 +18,9 @@ class Inimigo(Sprite):
             self.rect.y = randint(100,600)
                 
         self.rect.x -= self.velocidade
-
+        if self.rect.x == 0:
+            self.kill()
+            
 # if __name__ == "__main__":
 #     from pygame.sprite import Sprite
 #     from pygame.image import load

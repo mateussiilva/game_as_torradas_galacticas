@@ -42,7 +42,7 @@ while True:
 
     # ESPAÇO PARA LER OS EVENTOS
     for evento in event.get():
-        if evento.type == QUIT: #EVENTO PARA FECHAR O JOGO
+        if evento.type == QUIT or mortes == 1: #EVENTO PARA FECHAR O JOGO
             pygame.quit()
 
         if evento.type == KEYUP:
@@ -52,16 +52,19 @@ while True:
                 print(f"Taquei {contatador_torradas}")
 
     if groupcollide(grupo_torradas,grupo_inimigos,True,True): # MATEI O INIMGO
-        mortes +1 
+        mortes += 1
         print("Torrada bateu no inimigo")
     
     if groupcollide(grupo_herois,grupo_inimigos,True,True):
         print("GAME OVER")
+        pygame.quit()
     
     # DESENHA OS GRUPOS NA TELA  
     grupo_herois.draw(superfice)
     grupo_inimigos.draw(superfice)
     grupo_torradas.draw(superfice)
+    
+    
     # ATUALIZA OS GRUPOS NA TELA
     grupo_herois.update()
     grupo_inimigos.update()
