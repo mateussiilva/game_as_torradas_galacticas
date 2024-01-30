@@ -5,7 +5,7 @@ from pygame import display, event
 from pygame.image import load
 from pygame.transform import scale
 from pygame.sprite import  Group,GroupSingle, groupcollide
-from pygame.locals import QUIT,KEYUP,K_SPACE
+from pygame.locals import QUIT,KEYUP,K_SPACE,KEYDOWN,K_k
 from pygame.time import Clock
 from persogens.heroi import DunoFausto,Torradas
 from persogens.inimigo import Inimigo
@@ -51,6 +51,10 @@ while True:
                 heroi.tacar_torrada()
                 print(f"Taquei {contatador_torradas}")
 
+        if evento.type == KEYDOWN:
+            if evento.key == K_k:
+                print("Vou soltar a ULTIMATE DO PERSONAGEM")
+                heroi.ultimate()
     if groupcollide(grupo_torradas,grupo_inimigos,True,True): # MATEI O INIMGO
         mortes += 1
         print("Torrada bateu no inimigo")
@@ -61,14 +65,14 @@ while True:
     
     # DESENHA OS GRUPOS NA TELA  
     grupo_herois.draw(superfice)
-    grupo_inimigos.draw(superfice)
-    grupo_torradas.draw(superfice)
+    # grupo_inimigos.draw(superfice)
+    # grupo_torradas.draw(superfice)
     
     
     # ATUALIZA OS GRUPOS NA TELA
     grupo_herois.update()
-    grupo_inimigos.update()
-    grupo_torradas.update()
+    # grupo_inimigos.update()
+    # grupo_torradas.update()
 
     # ATUALIZA A TELA EM SI
     display.update()

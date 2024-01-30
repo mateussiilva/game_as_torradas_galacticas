@@ -20,7 +20,11 @@ class DunoFausto(Sprite):
         toast = Torradas(*self.rect.center)
         if len(self.grupo_torradas) <= self.quantidade_poder:
             self.grupo_torradas.add(toast)
-        
+
+    # Isso é apenas uma brinceira, não funciona direito rsrsr
+    def ultimate(self):
+        self.velocidade = 3
+        # self.quantidade_poder = 10
 
 
     def update(self):
